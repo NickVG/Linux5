@@ -1,0 +1,24 @@
+---
+- name: Installation fo NFS server
+- become: true
+  yum:
+    name: nfs-utils
+    state: latest
+  service:
+    name: 
+      - nfs-server
+      - rpcbind
+    state: started
+    enabled: yes
+
+    name: Run command if /path/to/database does not exist (with 'cmd' parameter).
+     command:
+       cmd: mkdir -p /var/nfs; chmod -R 777 /var/nfs; echo "/var/nfs 10.1.1.0/24(rw,sync,no_root_squash,no_all_squash)" >> /etc/exports
+         creates: /var/nfs
+
+  service:
+    name:
+      - nfs-server
+    state: restarted
+
+
